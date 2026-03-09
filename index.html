@@ -1,12 +1,621 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Ibuniquelw Hue – Android Developer</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Twenty Over All LLC builds practical Android productivity tools designed to help users track work, stay focused, and improve daily performance." />
+  <meta name="keywords" content="Twenty Over All LLC, Productivity App, Android App, productivity tracker, task tracking, time tracking" />
+  <meta name="author" content="Twenty Over All LLC" />
+  <title>Twenty Over All LLC | Productivity App</title>
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-alt: #111827;
+      --card: rgba(255, 255, 255, 0.08);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --accent: #38bdf8;
+      --accent-2: #22c55e;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      --radius: 20px;
+      --max: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.20), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.16), transparent 30%),
+        linear-gradient(135deg, var(--bg), var(--bg-alt));
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(15, 23, 42, 0.75);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 90px 0 70px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.14);
+      color: #bae6fd;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 4.6rem);
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 680px;
+      margin-bottom: 28px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 26px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 22px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #0284c7);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+    }
+
+    .hero-points {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero-points span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .app-preview {
+      display: grid;
+      gap: 18px;
+    }
+
+    .phone {
+      background: #0b1220;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 28px;
+      padding: 16px;
+      max-width: 340px;
+      margin: 0 auto;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.4);
+    }
+
+    .screen {
+      border-radius: 18px;
+      padding: 16px;
+      background: linear-gradient(180deg, #13203a, #0f172a);
+      min-height: 500px;
+    }
+
+    .screen-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      color: #e2e8f0;
+      font-size: 0.9rem;
+    }
+
+    .app-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .mini-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .mini-card .label {
+      font-size: 0.78rem;
+      color: #cbd5e1;
+      margin-bottom: 6px;
+    }
+
+    .mini-card .value {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .activity {
+      margin-top: 14px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .activity-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 12px 14px;
+      color: #e5e7eb;
+      font-size: 0.92rem;
+    }
+
+    .activity-item span:last-child {
+      color: #86efac;
+      font-weight: 700;
+    }
+
+    section {
+      padding: 40px 0 60px;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      margin-bottom: 12px;
+    }
+
+    .section-text {
+      color: var(--muted);
+      max-width: 760px;
+      margin-bottom: 28px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.12rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+    .highlight {
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      background: linear-gradient(180deg, rgba(56, 189, 248, 0.10), rgba(255,255,255,0.04));
+    }
+
+    .about-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .about-panel {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .list {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .list div {
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.05);
+      color: var(--muted);
+    }
+
+    .contact-box {
+      text-align: center;
+      background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.04));
+      border: 1px solid var(--card-border);
+      border-radius: 22px;
+      padding: 34px 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-box h2 {
+      margin-bottom: 12px;
+      font-size: 2rem;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 auto 20px;
+    }
+
+    .email-link {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #bae6fd;
+    }
+
+    footer {
+      padding: 24px 0 40px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .about-box,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 70px;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .cta-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .phone {
+        max-width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Twenty Over All</h1>
-  <p>Independent Android application developer.</p>
-  <p>Contact: toa.apps@outlook.com</p>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand-name">Twenty Over All LLC</div>
+        <div class="brand-sub">Practical Android productivity tools</div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#product">Product</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Built for focus, tracking, and daily execution</div>
+          <h1>Productivity tools built to help real work get done.</h1>
+          <p>
+            Twenty Over All LLC develops practical Android applications with a focus on
+            simple workflows, time tracking, task visibility, and measurable daily output.
+            Our flagship <strong>Productivity App</strong> is designed to help users stay organized,
+            log activity, and better understand how their time is spent.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#product">Explore the Productivity App</a>
+            <a class="btn btn-secondary" href="mailto:toa.apps@outlook.com">Contact Us</a>
+          </div>
+
+          <div class="hero-points">
+            <span>✔ Android-focused</span>
+            <span>✔ Productivity-centered</span>
+            <span>✔ Built for everyday use</span>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="app-preview">
+            <div class="phone">
+              <div class="screen">
+                <div class="screen-top">
+                  <span>9:41</span>
+                  <span>Productivity App</span>
+                </div>
+
+                <div class="app-title">Today’s Activity</div>
+
+                <div class="stat-grid">
+                  <div class="mini-card">
+                    <div class="label">Logs</div>
+                    <div class="value">18</div>
+                  </div>
+                  <div class="mini-card">
+                    <div class="label">Focused Time</div>
+                    <div class="value">6.4h</div>
+                  </div>
+                  <div class="mini-card">
+                    <div class="label">Top Task</div>
+                    <div class="value">Planning</div>
+                  </div>
+                  <div class="mini-card">
+                    <div class="label">Completion</div>
+                    <div class="value">82%</div>
+                  </div>
+                </div>
+
+                <div class="activity">
+                  <div class="activity-item">
+                    <span>Email / Admin</span>
+                    <span>45 min</span>
+                  </div>
+                  <div class="activity-item">
+                    <span>Project Work</span>
+                    <span>2 hr 10 min</span>
+                  </div>
+                  <div class="activity-item">
+                    <span>Meetings</span>
+                    <span>1 hr 30 min</span>
+                  </div>
+                  <div class="activity-item">
+                    <span>Reporting</span>
+                    <span>55 min</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="product">
+      <div class="container">
+        <h2 class="section-title">Our Featured Product</h2>
+        <p class="section-text">
+          The Productivity App is the centerpiece of our current development work.
+          It is built to give users a cleaner way to log tasks, monitor time usage,
+          review reports, and create a more intentional workday.
+        </p>
+
+        <div class="cards">
+          <div class="card highlight">
+            <h3>Productivity App</h3>
+            <p>
+              A focused Android productivity tracker built for logging work activity,
+              reviewing performance, and keeping important day-to-day tasks visible.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Time Tracking</h3>
+            <p>
+              Record active work, missed logs, and task duration so users can better
+              understand where time goes across the day.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Reporting & Insights</h3>
+            <p>
+              Review totals, trends, and visual summaries that make it easier to spot
+              patterns, improve focus, and make better planning decisions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About Twenty Over All LLC</h2>
+        <p class="section-text">
+          Twenty Over All LLC is an independent software company focused on building useful,
+          straightforward mobile tools. We care about products that solve real problems,
+          reduce friction, and support better daily routines.
+        </p>
+
+        <div class="about-box">
+          <div class="about-panel">
+            <h3>What we focus on</h3>
+            <div class="list">
+              <div>Android app development with practical business value</div>
+              <div>Simple interfaces that work well on real devices</div>
+              <div>Productivity tools centered on action, visibility, and reporting</div>
+              <div>Independent software built with long-term improvement in mind</div>
+            </div>
+          </div>
+
+          <div class="about-panel">
+            <h3>Current mission</h3>
+            <p>
+              Our current priority is continuing to improve the Productivity App and establish
+              a strong foundation for future app releases under the Twenty Over All LLC brand.
+            </p>
+            <div class="list">
+              <div>Refine usability</div>
+              <div>Strengthen reporting features</div>
+              <div>Expand the product roadmap</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <h2>Get in touch</h2>
+          <p>
+            For business inquiries, partnership opportunities, or questions about our
+            Productivity App, contact Twenty Over All LLC directly.
+          </p>
+          <a class="email-link" href="mailto:toa.apps@outlook.com">toa.apps@outlook.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      &copy; 2026 Twenty Over All LLC. All rights reserved.
+    </div>
+  </footer>
 </body>
 </html>
-``
