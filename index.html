@@ -23,15 +23,7 @@
       --max: 1200px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
@@ -40,12 +32,6 @@
         radial-gradient(circle at top left, rgba(56, 189, 248, 0.20), transparent 30%),
         radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.16), transparent 30%),
         linear-gradient(135deg, var(--bg), var(--bg-alt));
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
     }
 
     .container {
@@ -54,202 +40,164 @@
     }
 
     header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(10px);
-      background: rgba(15, 23, 42, 0.75);
+      padding: 20px 0;
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
     .nav {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 18px 0;
-      gap: 20px;
+      align-items: center;
     }
 
     .brand-name {
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       font-weight: 700;
-    }
-
-    .brand-sub {
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      font-weight: 600;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
     }
 
     .hero {
-      padding: 90px 0 70px;
-    }
-
-    .hero-grid {
+      padding: 80px 0;
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 32px;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
       align-items: center;
     }
 
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 16px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(56, 189, 248, 0.14);
-      color: #bae6fd;
-      font-size: 0.9rem;
-      font-weight: 700;
-    }
-
     h1 {
-      font-size: clamp(2.4rem, 5vw, 4.6rem);
-      line-height: 1.05;
-      margin-bottom: 18px;
+      font-size: 3rem;
+      margin-bottom: 20px;
     }
 
-    .hero p {
+    p {
       color: var(--muted);
-      margin-bottom: 28px;
-    }
-
-    .cta-row {
-      display: flex;
-      gap: 14px;
-      margin-bottom: 26px;
-      flex-wrap: wrap;
+      margin-bottom: 20px;
     }
 
     .btn {
-      padding: 12px 22px;
-      border-radius: 12px;
-      font-weight: 700;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-weight: bold;
+      display: inline-block;
+      margin-right: 10px;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--accent), #0284c7);
+      background: var(--accent);
       color: white;
     }
 
     .btn-secondary {
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.2);
     }
 
-    .hero-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: var(--shadow);
+    .preview {
+      display: flex;
+      justify-content: center;
     }
 
-    .phone {
-      background: #0b1220;
+    .preview img {
+      width: 320px;
+      border-radius: 20px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.4);
       border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 28px;
-      padding: 16px;
-      max-width: 340px;
-      margin: 0 auto;
-    }
-
-    .screen {
-      border-radius: 18px;
-      background: linear-gradient(180deg, #13203a, #0f172a);
-      padding: 12px;
-    }
-
-    .screen img.app-image {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 12px;
     }
 
     section {
-      padding: 40px 0 60px;
+      padding: 60px 0;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 20px;
+      border-radius: 15px;
     }
 
     footer {
-      padding: 24px 0 40px;
       text-align: center;
+      padding: 30px;
       color: var(--muted);
     }
 
-    @media (max-width: 960px) {
-      .hero-grid {
+    @media (max-width: 900px) {
+      .hero {
         grid-template-columns: 1fr;
+        text-align: center;
       }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="container nav">
-      <div>
-        <div class="brand-name">Twenty Over All LLC</div>
-        <div class="brand-sub">Practical Android productivity tools</div>
-      </div>
-      <nav class="nav-links">
-        <a href="#product">Product</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
+
+<header>
+  <div class="container nav">
+    <div class="brand-name">Twenty Over All LLC</div>
+  </div>
+</header>
+
+<main>
+
+<section class="hero container">
+  <div>
+    <h1>Productivity tools built to help real work get done.</h1>
+    <p>
+      Our Productivity App helps users track time, manage tasks, and understand their work patterns through clear reporting and insights.
+    </p>
+
+    <a class="btn btn-primary" href="#product">Explore App</a>
+    <a class="btn btn-secondary" href="mailto:toa.apps@outlook.com">Contact</a>
+  </div>
+
+  <div class="preview">
+    <img src="https://raw.githubusercontent.com/ibuniquelw-hue/ibuniquelw-hue.github.io/main/report.png" alt="App Preview">
+  </div>
+</section>
+
+<section id="product" class="container">
+  <h2>Productivity App</h2>
+  <p>A clean, focused Android app for tracking work, logs, and performance.</p>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Time Tracking</h3>
+      <p>Track your daily work with precision.</p>
     </div>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">Built for focus, tracking, and daily execution</div>
-          <h1>Productivity tools built to help real work get done.</h1>
-          <p>
-            Twenty Over All LLC develops practical Android applications focused on
-            time tracking, task visibility, and measurable daily output.
-          </p>
-
-          <div class="cta-row">
-            <a class="btn btn-primary" href="#product">Explore the Productivity App</a>
-            <a class="btn btn-secondary" href="mailto:toa.apps@outlook.com">Contact Us</a>
-          </div>
-        </div>
-
-        <div class="hero-card">
-          <div class="phone">
-            <div class="screen">
-              <img
-                src="https://ibuniquelw-hue.github.io/report.png"
-                alt="Productivity App report screen"
-                class="app-image"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      &copy; 2026 Twenty Over All LLC. All rights reserved.
+    <div class="card">
+      <h3>Logs & Editing</h3>
+      <p>Manage and update your activity easily.</p>
     </div>
-  </footer>
+
+    <div class="card">
+      <h3>Reports & Insights</h3>
+      <p>Visualize your productivity and trends.</p>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <h2>About</h2>
+  <p>
+    Twenty Over All LLC builds practical productivity tools designed for real-world use.
+  </p>
+</section>
+
+<section class="container">
+  <h2>Contact</h2>
+  <p>Email: toa.apps@outlook.com</p>
+</section>
+
+</main>
+
+<footer>
+  &copy; 2026 Twenty Over All LLC
+</footer>
+
 </body>
 </html>
