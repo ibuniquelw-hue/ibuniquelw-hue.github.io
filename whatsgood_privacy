@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy - What's Good</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; line-height: 1.6; background: #f7f9fc; color: #1f2937; }
+    .container { max-width: 900px; margin: 40px auto; background: #ffffff; padding: 32px; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+    h1, h2 { color: #0f172a; }
+    h1 { margin-top: 0; font-size: 2rem; }
+    h2 { margin-top: 28px; font-size: 1.2rem; }
+    p, li { font-size: 1rem; }
+    ul { padding-left: 20px; }
+    .muted { color: #64748b; }
+    a { color: #2563eb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid #e5e7eb; font-size: .95rem; color: #64748b; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Privacy Policy</h1>
+    <p class="muted">Last updated: April 28, 2026</p>
+
+```
+<p>
+  This Privacy Policy explains how What's Good, published by Twenty Over All LLC,
+  collects, uses, and protects information when you use the What's Good mobile app.
+</p>
+
+<h2>Information We Collect</h2>
+<p>Depending on how you use the app, we may collect and process:</p>
+<ul>
+  <li>Account information such as your email address for login and authentication</li>
+  <li>Restaurant notes, food ratings, people profiles, group information, and saved dining preferences you create in the app</li>
+  <li>Location information when you use nearby restaurant or map-based features</li>
+  <li>Basic device and app usage information needed for functionality, performance, and troubleshooting</li>
+  <li>Advertising-related data through third-party ad services if ads are enabled</li>
+</ul>
+
+<h2>How We Use Your Information</h2>
+<p>We use information to:</p>
+<ul>
+  <li>Provide login, syncing, shared group features, and core app functionality</li>
+  <li>Store and display your restaurants, food notes, ratings, and people preferences</li>
+  <li>Help you discover nearby restaurants and open map/navigation features</li>
+  <li>Improve app performance, reliability, and user experience</li>
+  <li>Support advertising or monetization features if enabled</li>
+</ul>
+
+<h2>Location</h2>
+<p>
+  What's Good may request location access when you use nearby restaurant discovery.
+  Location is used to find restaurants near you and is not required for basic saved restaurant and food note features.
+</p>
+
+<h2>Advertising</h2>
+<p>
+  What's Good may display ads through third-party advertising providers, including Google AdMob.
+  These providers may collect device identifiers, usage data, and related information to serve and measure ads
+  in accordance with their own privacy practices.
+</p>
+
+<h2>Data Storage</h2>
+<p>
+  Your information may be stored locally on your device and may also be stored in cloud services used to support
+  authentication, syncing, group sharing, and app functionality.
+</p>
+
+<h2>Data Sharing</h2>
+<p>
+  We do not sell your personal information. We may share limited information with service providers only as needed
+  to operate the app, such as authentication, cloud storage, maps/location services, analytics, and advertising services.
+  If you use group features, restaurant notes and preferences may be visible to members of your shared group.
+</p>
+
+<h2>Data Retention</h2>
+<p>
+  We retain data for as long as needed to provide app functionality and comply with legal obligations.
+  You may remove content you create in the app at any time through available app features.
+</p>
+
+<h2>Your Choices</h2>
+<p>You may:</p>
+<ul>
+  <li>Edit or delete restaurants, food notes, people, and saved preferences within the app</li>
+  <li>Choose whether to sign in or use cloud sync features</li>
+  <li>Choose whether to grant location permission for nearby restaurant features</li>
+  <li>Stop using the app at any time</li>
+  <li>Contact us with questions about your data</li>
+</ul>
+
+<h2>Children's Privacy</h2>
+<p>
+  What's Good is not directed to children under 13, and we do not knowingly collect personal information
+  from children under 13.
+</p>
+
+<h2>Security</h2>
+<p>
+  We take reasonable steps to protect your information, but no method of transmission or storage is completely secure.
+</p>
+
+<h2>Changes to This Policy</h2>
+<p>
+  We may update this Privacy Policy from time to time. Updates will be posted on this page with a revised
+  “Last updated” date.
+</p>
+
+<h2>Contact Us</h2>
+<p>
+  If you have any questions about this Privacy Policy, contact us at
+  <a href="mailto:toa.apps@outlook.com">toa.apps@outlook.com</a>.
+</p>
+
+<footer>
+  Twenty Over All LLC · What's Good
+</footer>
+```
+
+  </div>
+</body>
+</html>
