@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="What's Good is a restaurant discovery and group food notes app by Twenty Over All LLC." />
+  <meta name="keywords" content="What's Good, restaurant app, food notes, dining tracker, group restaurant picker, Twenty Over All LLC" />
+  <meta name="author" content="Twenty Over All LLC" />
+  <title>What's Good | Twenty Over All LLC</title>
+  <style>
+    :root {
+      --bg: #0b1225;
+      --bg-alt: #111a33;
+      --card: rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.14);
+      --text: #f8fafc;
+      --muted: #b6c2d4;
+      --hero: #7c3aed;
+      --primary: #2563eb;
+      --good: #10b981;
+      --warning: #f59e0b;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(124,58,237,.35), transparent 34%),
+        radial-gradient(circle at top right, rgba(16,185,129,.20), transparent 28%),
+        linear-gradient(135deg, var(--bg), #050814 70%);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 24px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(5,8,20,.55);
+      backdrop-filter: blur(12px);
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      font-size: 1.15rem;
+    }
+
+    .logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--hero), var(--primary), var(--good));
+      box-shadow: 0 10px 30px rgba(37,99,235,.35);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    a {
+      color: #bfdbfe;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 56px 24px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-card, .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: 0 24px 70px rgba(0,0,0,.28);
+    }
+
+    .hero-card {
+      padding: 38px;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 4.8rem);
+      line-height: 1;
+      margin: 0 0 18px;
+      letter-spacing: -0.06em;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 1.18rem;
+      max-width: 680px;
+      margin: 0 0 28px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 18px;
+      border-radius: 999px;
+      font-weight: 900;
+      border: 1px solid var(--border);
+    }
+
+    .button.primary {
+      background: linear-gradient(135deg, var(--hero), var(--primary));
+      color: white;
+      border: none;
+    }
+
+    .button.secondary {
+      background: rgba(255,255,255,.08);
+      color: white;
+    }
+
+    .phone-preview {
+      padding: 24px;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .phone {
+      width: 240px;
+      min-height: 420px;
+      border-radius: 34px;
+      padding: 18px;
+      background: linear-gradient(180deg, #0f172a, #111827);
+      border: 1px solid rgba(255,255,255,.2);
+      box-shadow: 0 28px 80px rgba(0,0,0,.45);
+    }
+
+    .screen-card {
+      padding: 18px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, var(--hero), var(--primary), var(--good));
+      margin-bottom: 14px;
+    }
+
+    .pill-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+    .pill {
+      font-size: .78rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.16);
+      color: white;
+      font-weight: 800;
+    }
+
+    .small-card {
+      background: rgba(255,255,255,.08);
+      border-radius: 18px;
+      padding: 14px;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    section { margin-top: 34px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card { padding: 24px; }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.25rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .legal {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 24px 48px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 820px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
+      nav { align-items: flex-start; flex-direction: column; }
+      .hero-card { padding: 26px; }
+      .phone-preview { min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="brand">
+        <div class="logo">🍽️</div>
+        <span>What's Good</span>
+      </div>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="whats_good_privacy.html">Privacy</a>
+        <a href="whats_good_terms.html">Terms</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-card">
+        <h1>Remember what’s good.</h1>
+        <p class="subtitle">
+          What's Good helps friends, families, and groups track restaurants, food notes,
+          favorites, and who likes what — then settle where to eat with a simple picker.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="https://play.google.com/store/apps/details?id=com.twentyoverall.whatsgood">Get it on Google Play</a>
+          <a class="button secondary" href="whats_good_privacy.html">Privacy Policy</a>
+        </div>
+      </div>
+
+      <div class="phone-preview">
+        <div class="phone">
+          <div class="screen-card">
+            <strong>Settle For Us</strong>
+            <div style="font-size: 2rem; font-weight: 900; line-height: 1.05; margin-top: 12px;">One clean pick.</div>
+            <div class="pill-row">
+              <span class="pill">Favorites</span>
+              <span class="pill">Nearby</span>
+              <span class="pill">Person-friendly</span>
+            </div>
+          </div>
+          <div class="small-card">🌮 Person 1 loved the tacos</div>
+          <div class="small-card">🍗 Person 2 avoids blue cheese</div>
+          <div class="small-card">📍 Open nearby restaurants in Maps</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="grid">
+        <div class="card">
+          <h3>Track food notes</h3>
+          <p>Save restaurant notes, menu items, ratings, and memories so you know what to order next time.</p>
+        </div>
+        <div class="card">
+          <h3>Know who likes what</h3>
+          <p>Add person-specific preferences for families, friends, and groups.</p>
+        </div>
+        <div class="card">
+          <h3>Settle dinner faster</h3>
+          <p>Use the Settle For Us picker to randomly choose from saved places, favorites, want-to-try spots, or nearby restaurants.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h3>About Twenty Over All LLC</h3>
+        <p>
+          Twenty Over All LLC builds practical mobile tools focused on useful everyday workflows,
+          simple interfaces, and long-term product improvement.
+        </p>
+        <div class="legal">
+          <a class="button secondary" href="whats_good_privacy.html">Privacy Policy</a>
+          <a class="button secondary" href="whats_good_terms.html">Terms of Service</a>
+          <a class="button secondary" href="mailto:toa.apps@outlook.com">Contact Support</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Twenty Over All LLC · What's Good · Contact: <a href="mailto:toa.apps@outlook.com">toa.apps@outlook.com</a>
+  </footer>
+</body>
+</html>
