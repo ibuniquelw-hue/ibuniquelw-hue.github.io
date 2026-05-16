@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Workout is a simple fitness tracking app from Twenty Over All LLC for logging workouts, exercise sets, strength progress, notes, and running shoe mileage." />
+  <meta name="keywords" content="Workout, workout tracker, fitness log, exercise tracker, shoe mileage, Twenty Over All LLC" />
+  <meta name="author" content="Twenty Over All LLC" />
+  <title>Workout | Twenty Over All LLC</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-alt: #0d1f35;
+      --card: rgba(255, 255, 255, 0.08);
+      --card-strong: rgba(255, 255, 255, 0.12);
+      --border: rgba(255, 255, 255, 0.14);
+      --text: #f7f7fb;
+      --muted: #c7d2e3;
+      --accent: #ff8a1f;
+      --accent-2: #111111;
+      --success: #76e0a0;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(255, 138, 31, 0.24), transparent 30%),
+        radial-gradient(circle at 88% 2%, rgba(94, 207, 255, 0.16), transparent 26%),
+        linear-gradient(180deg, #07111f 0%, #0b1627 50%, #07111f 100%);
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrap {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 28px 0;
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(14px);
+      background: rgba(7, 17, 31, 0.78);
+      border-bottom: 1px solid var(--border);
+      z-index: 10;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent), #ffb14f);
+      color: #050505;
+      font-size: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-weight: 700;
+    }
+
+    .hero {
+      padding: 72px 0 46px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 13px;
+    }
+
+    h1 {
+      margin: 14px 0 18px;
+      font-size: clamp(42px, 7vw, 78px);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: clamp(18px, 2.2vw, 23px);
+      max-width: 720px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 14px 20px;
+      font-weight: 800;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+    }
+
+    .button.primary {
+      background: var(--accent);
+      color: #080808;
+      border-color: transparent;
+    }
+
+    .phone-card {
+      min-height: 540px;
+      border-radius: 38px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 26px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .phone-top {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 26px;
+    }
+
+    .workout-card {
+      background: rgba(4, 12, 24, 0.62);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 28px;
+      padding: 20px;
+      margin-bottom: 18px;
+    }
+
+    .workout-title {
+      font-size: 24px;
+      font-weight: 900;
+      margin: 0 0 4px;
+    }
+
+    .pill {
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 138, 31, 0.18);
+      border: 1px solid rgba(255, 138, 31, 0.42);
+      color: #ffd0a5;
+      font-weight: 800;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    section {
+      padding: 42px 0;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin: 0 0 16px;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 820px;
+      font-size: 18px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 24px;
+      min-height: 170px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    .card p, .legal p, .legal li {
+      color: var(--muted);
+    }
+
+    .legal {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 28px;
+      margin-top: 22px;
+    }
+
+    .legal h3 {
+      margin-top: 28px;
+      color: #ffffff;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0 46px;
+      color: var(--muted);
+      margin-top: 36px;
+    }
+
+    @media (max-width: 850px) {
+      .hero { grid-template-columns: 1fr; padding-top: 44px; }
+      .grid { grid-template-columns: 1fr; }
+      .nav-links { font-size: 14px; gap: 12px; }
+      .phone-card { min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <div class="brand">
+          <div class="logo" aria-hidden="true">🏋</div>
+          <div>
+            <div>Workout</div>
+            <small style="color: var(--muted);">by Twenty Over All LLC</small>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#privacy">Privacy</a>
+          <a href="#terms">Terms</a>
+          <a href="#support">Support</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">Simple fitness tracking</div>
+        <h1>Log workouts. Track progress. Know what to do next.</h1>
+        <p class="lead">
+          Workout helps you save strength workouts, track sets, reps, weights, exercise notes,
+          running mileage, and shoe mileage in one simple mobile app.
+        </p>
+        <div class="cta-row">
+          <a class="button primary" href="#privacy">Privacy Policy</a>
+          <a class="button" href="#terms">Terms of Service</a>
+        </div>
+      </div>
+
+      <div class="phone-card" aria-label="Workout app preview">
+        <div class="phone-top">
+          <span>Workout</span>
+          <span>Progress</span>
+        </div>
+        <div class="workout-card">
+          <p class="workout-title">Arm Day</p>
+          <p>Barbell Curl · Triceps Pushdown · Shoulder Press</p>
+          <span class="pill">Increase next time</span>
+        </div>
+        <div class="workout-card">
+          <p class="workout-title">Outdoor Run</p>
+          <p>Track miles, time, notes, and shoe usage.</p>
+          <span class="pill">Shoe mileage: 0 / 250</span>
+        </div>
+        <div class="workout-card">
+          <p class="workout-title">Calendar History</p>
+          <p>Review prior workouts by day, week, and month.</p>
+          <span class="pill">Never lose the log</span>
+        </div>
+      </div>
+    </div>
+
+    <section id="features">
+      <div class="wrap">
+        <h2>App features</h2>
+        <p class="section-intro">
+          Built for fast personal workout logging without overcomplication.
+        </p>
+        <div class="grid">
+          <div class="card">
+            <h3>Strength logging</h3>
+            <p>Track exercises, sets, reps, weight, notes, and prior-weight indicators.</p>
+          </div>
+          <div class="card">
+            <h3>Workout plans</h3>
+            <p>Choose generated workouts, saved routines, or build a manual workout.</p>
+          </div>
+          <div class="card">
+            <h3>Running mileage</h3>
+            <p>Log outdoor runs and monitor current shoe mileage toward replacement range.</p>
+          </div>
+          <div class="card">
+            <h3>Calendar history</h3>
+            <p>Open past workouts using daily, weekly, and monthly views.</p>
+          </div>
+          <div class="card">
+            <h3>Cloud sync</h3>
+            <p>Optional Firebase-backed account sync helps keep workout data available across sessions.</p>
+          </div>
+          <div class="card">
+            <h3>Guest mode</h3>
+            <p>Start quickly as a guest, then create an account later if desired.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="privacy">
+      <div class="wrap">
+        <h2>Privacy Policy</h2>
+        <p class="section-intro">Effective date: May 16, 2026</p>
+        <div class="legal">
+          <p>
+            Workout is operated by Twenty Over All LLC. This Privacy Policy explains what information
+            the app may collect, how that information is used, and what choices users have.
+          </p>
+
+          <h3>Information you provide</h3>
+          <p>
+            The app may store information you enter, including workout names, exercise names, sets,
+            reps, weights, exercise notes, workout dates, cardio mileage, run times, shoe names, shoe
+            mileage, account email address, and related fitness log information.
+          </p>
+
+          <h3>Account and authentication</h3>
+          <p>
+            The app may use Firebase Authentication to support guest access, account sign-up, and login.
+            If you create an account, your email address and authentication identifiers may be processed
+            by Firebase to provide account access and cloud sync.
+          </p>
+
+          <h3>Cloud storage and sync</h3>
+          <p>
+            The app may use Firebase Cloud Firestore to save and sync workout data. Cloud sync is used
+            to help preserve workout history and make app data available after reinstalling or signing in.
+          </p>
+
+          <h3>Advertising</h3>
+          <p>
+            The app may include advertising or ad placeholders. If ads are enabled, advertising providers
+            may process device, diagnostic, approximate location, or usage information according to their
+            own privacy practices and applicable Google Play policies.
+          </p>
+
+          <h3>How information is used</h3>
+          <ul>
+            <li>To save and display workout history.</li>
+            <li>To show prior workout weights and progress indicators.</li>
+            <li>To track run mileage and shoe mileage.</li>
+            <li>To support account access and optional cloud sync.</li>
+            <li>To improve reliability, diagnose issues, and support app functionality.</li>
+          </ul>
+
+          <h3>Data sharing</h3>
+          <p>
+            Workout does not sell personal information. Data may be processed by service providers used
+            to operate the app, including Firebase and advertising services when enabled.
+          </p>
+
+          <h3>Data deletion</h3>
+          <p>
+            Users may delete workout entries inside the app where deletion controls are available. To request
+            account or cloud data deletion, contact Twenty Over All LLC at the support email below.
+          </p>
+
+          <h3>Children</h3>
+          <p>
+            Workout is not designed for children under 13. Do not use the app to submit information for a child
+            under 13.
+          </p>
+
+          <h3>Contact</h3>
+          <p>
+            Questions, privacy requests, or deletion requests can be sent to:
+            <a href="mailto:toa.apps@outlook.com">toa.apps@outlook.com</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="terms">
+      <div class="wrap">
+        <h2>Terms of Service</h2>
+        <p class="section-intro">Effective date: May 16, 2026</p>
+        <div class="legal">
+          <p>
+            By using Workout, you agree to these Terms of Service. If you do not agree, do not use the app.
+          </p>
+
+          <h3>Use of the app</h3>
+          <p>
+            Workout is intended for personal workout tracking, exercise logging, progress review, and running
+            shoe mileage tracking. You are responsible for the information you enter and for using the app safely.
+          </p>
+
+          <h3>Not medical advice</h3>
+          <p>
+            Workout is not a medical, fitness coaching, or healthcare service. Workout logs, indicators, and
+            recommendations are for general tracking only. Consult a qualified professional before starting or
+            changing an exercise program, especially if you have a medical condition or injury.
+          </p>
+
+          <h3>Accounts and cloud sync</h3>
+          <p>
+            Some features may require guest authentication or account login. You are responsible for maintaining
+            access to your account and for using accurate account information.
+          </p>
+
+          <h3>Advertising</h3>
+          <p>
+            The app may display advertising or sponsored placements. Ad availability may vary.
+          </p>
+
+          <h3>Availability and accuracy</h3>
+          <p>
+            Workout is provided as-is. Twenty Over All LLC does not guarantee that every feature, sync operation,
+            calculation, workout suggestion, or stored entry will always be available, accurate, or error-free.
+          </p>
+
+          <h3>User responsibility</h3>
+          <p>
+            Stop exercising if you feel pain, dizziness, shortness of breath, or other concerning symptoms.
+            Use proper equipment, form, and judgment when exercising.
+          </p>
+
+          <h3>Changes</h3>
+          <p>
+            These terms may be updated from time to time. Continued use of the app after changes means you accept
+            the updated terms.
+          </p>
+
+          <h3>Contact</h3>
+          <p>
+            Questions can be sent to:
+            <a href="mailto:toa.apps@outlook.com">toa.apps@outlook.com</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="support">
+      <div class="wrap">
+        <h2>Support</h2>
+        <p class="section-intro">
+          For support, privacy requests, terms questions, or account/data deletion requests, contact
+          <a href="mailto:toa.apps@outlook.com">toa.apps@outlook.com</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © 2026 Twenty Over All LLC. Workout is a fitness tracking app for personal logging and progress review.
+    </div>
+  </footer>
+</body>
+</html>
