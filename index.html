@@ -3,221 +3,379 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Twenty Over All LLC builds practical Android productivity tools designed to help users track work, stay focused, and improve daily performance." />
-  <meta name="keywords" content="Twenty Over All LLC, Productivity App, Android App, productivity tracker, task tracking, time tracking" />
+  <meta name="description" content="Twenty Over All LLC builds practical Android apps for productivity, food notes, workout tracking, and everyday personal improvement." />
+  <meta name="keywords" content="Twenty Over All LLC, Productivity Tracker, What's Good, Workout, Android apps, productivity app, restaurant app, workout tracker" />
   <meta name="author" content="Twenty Over All LLC" />
-  <title>Twenty Over All LLC | Productivity App</title>
-
+  <title>Twenty Over All LLC | Practical Android Apps</title>
   <style>
     :root {
-      --bg: #0f172a;
-      --bg-alt: #111827;
-      --card: rgba(255, 255, 255, 0.08);
-      --card-border: rgba(255, 255, 255, 0.12);
+      --bg: #07111f;
+      --bg-alt: #0f172a;
+      --surface: rgba(255,255,255,.08);
+      --border: rgba(255,255,255,.14);
       --text: #f8fafc;
       --muted: #cbd5e1;
-      --accent: #38bdf8;
-      --accent-2: #22c55e;
-      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
-      --radius: 20px;
-      --max: 1200px;
+      --blue: #38bdf8;
+      --green: #22c55e;
+      --purple: #7c3aed;
+      --orange: #ff8a1f;
+      --shadow: 0 24px 80px rgba(0,0,0,.34);
+      --radius: 26px;
+      --max: 1180px;
     }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
+      margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(56, 189, 248, 0.20), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.16), transparent 30%),
-        linear-gradient(135deg, var(--bg), var(--bg-alt));
+        radial-gradient(circle at 10% 8%, rgba(56,189,248,.24), transparent 30%),
+        radial-gradient(circle at 88% 6%, rgba(124,58,237,.22), transparent 28%),
+        radial-gradient(circle at 78% 76%, rgba(255,138,31,.18), transparent 28%),
+        linear-gradient(135deg, #07111f 0%, #0f172a 52%, #050814 100%);
+      line-height: 1.6;
+      min-height: 100vh;
     }
-
-    .container {
-      width: min(92%, var(--max));
-      margin: 0 auto;
-    }
-
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
     header {
-      padding: 20px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(255,255,255,.09);
+      background: rgba(7,17,31,.78);
+      backdrop-filter: blur(16px);
     }
-
-    .nav {
+    nav {
+      min-height: 76px;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-    }
-
-    .brand-name {
-      font-size: 1.3rem;
-      font-weight: 700;
-    }
-
-    .hero {
-      padding: 80px 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
-    }
-
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-    }
-
-    p {
-      color: var(--muted);
-      margin-bottom: 20px;
-    }
-
-    .btn {
-      padding: 12px 20px;
-      border-radius: 10px;
-      font-weight: bold;
-      display: inline-block;
-      margin-right: 10px;
-      text-decoration: none;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: white;
-    }
-
-    .btn-secondary {
-      border: 1px solid rgba(255,255,255,0.2);
-      color: white;
-    }
-
-    .btn-play {
-      background: var(--accent-2);
-      color: white;
-    }
-
-    .preview {
-      display: flex;
-      justify-content: center;
-    }
-
-    .preview img {
-      width: 320px;
-      border-radius: 20px;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.4);
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    section {
-      padding: 60px 0;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
-
-    .card {
-      background: var(--card);
-      padding: 20px;
-      border-radius: 15px;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 900;
+      letter-spacing: -.02em;
     }
-
-    footer {
-      text-align: center;
-      padding: 30px;
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      color: #06111f;
+      background: linear-gradient(135deg, var(--blue), var(--green), var(--orange));
+      box-shadow: var(--shadow);
+      font-size: 24px;
+    }
+    .brand small { display: block; color: var(--muted); font-weight: 700; margin-top: -4px; }
+    .nav-links { display: flex; gap: 18px; flex-wrap: wrap; color: var(--muted); font-weight: 800; font-size: .95rem; }
+    .hero {
+      padding: 74px 0 38px;
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 34px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.07);
+      color: #bfdbfe;
+      text-transform: uppercase;
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: .13em;
+    }
+    h1 {
+      margin: 18px 0;
+      font-size: clamp(42px, 7vw, 82px);
+      line-height: .94;
+      letter-spacing: -.06em;
+    }
+    .lead { color: var(--muted); font-size: clamp(18px, 2.15vw, 23px); max-width: 780px; }
+    .button-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 18px;
+      border-radius: 999px;
+      font-weight: 900;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.08);
+      color: var(--text);
+      min-height: 48px;
+    }
+    .button.primary { color: #06111f; border: none; background: linear-gradient(135deg, var(--blue), var(--green)); }
+    .hero-stack {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 34px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+    .mini-app {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 14px;
+      align-items: center;
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.1);
+      margin-bottom: 12px;
+    }
+    .mini-app:last-child { margin-bottom: 0; }
+    .icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-size: 25px;
+      color: #050505;
+      font-weight: 900;
+    }
+    .icon.productivity { background: linear-gradient(135deg, var(--blue), var(--green)); }
+    .icon.food { background: linear-gradient(135deg, var(--purple), #2563eb, var(--green)); color: white; }
+    .icon.workout { background: linear-gradient(135deg, var(--orange), #ffb14f); }
+    .mini-app h3 { margin: 0 0 2px; font-size: 1.18rem; }
+    .mini-app p { margin: 0; color: var(--muted); font-size: .94rem; }
+    section { padding: 44px 0; }
+    .section-head { margin-bottom: 22px; }
+    h2 { font-size: clamp(30px, 4.5vw, 52px); letter-spacing: -.05em; line-height: 1; margin: 0 0 10px; }
+    .section-head p { color: var(--muted); margin: 0; max-width: 740px; }
+    .apps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .app-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 510px;
+      padding: 24px;
+      border-radius: var(--radius);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 60px rgba(0,0,0,.22);
+      display: flex;
+      flex-direction: column;
+    }
+    .app-card::before {
+      content: "";
+      position: absolute;
+      inset: -80px -80px auto auto;
+      width: 210px;
+      height: 210px;
+      border-radius: 999px;
+      opacity: .24;
+      filter: blur(2px);
+    }
+    .app-card.productivity::before { background: var(--blue); }
+    .app-card.food::before { background: var(--purple); }
+    .app-card.workout::before { background: var(--orange); }
+    .app-top { position: relative; z-index: 1; display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .app-card h3 { margin: 0; font-size: 1.55rem; letter-spacing: -.03em; }
+    .badge {
+      display: inline-flex;
+      width: fit-content;
+      margin-top: 4px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.13);
       color: var(--muted);
+      font-size: .78rem;
+      font-weight: 800;
     }
-
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
+    .app-card p { color: var(--muted); margin: 0 0 16px; position: relative; z-index: 1; }
+    .feature-list { position: relative; z-index: 1; list-style: none; padding: 0; margin: 4px 0 22px; color: var(--muted); }
+    .feature-list li { margin: 8px 0; display: flex; gap: 9px; align-items: flex-start; }
+    .feature-list li::before { content: "✓"; color: var(--green); font-weight: 900; }
+    .card-actions { position: relative; z-index: 1; margin-top: auto; display: flex; flex-wrap: wrap; gap: 10px; }
+    .button.play { background: var(--green); color: #04110a; border: none; }
+    .button.food-main { background: linear-gradient(135deg, var(--purple), #2563eb); border: none; }
+    .button.workout-main { background: var(--orange); color: #080808; border: none; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .info-card { padding: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+    .info-card h3 { margin: 0 0 10px; font-size: 1.35rem; }
+    .info-card p { margin: 0; color: var(--muted); }
+    footer { border-top: 1px solid var(--border); color: var(--muted); padding: 28px 0 48px; margin-top: 30px; }
+    footer a, .info-card a { color: #bfdbfe; font-weight: 800; }
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; padding-top: 48px; }
+      .apps-grid { grid-template-columns: 1fr; }
+      .app-card { min-height: auto; }
+    }
+    @media (max-width: 720px) {
+      nav { align-items: flex-start; flex-direction: column; }
+      .nav-links { gap: 12px; }
+      .info-grid { display: block; }
+      .info-card + .info-card { margin-top: 16px; }
+      .button { width: 100%; }
     }
   </style>
 </head>
-
 <body>
-
-<header>
-  <div class="container nav">
-    <div class="brand-name">Twenty Over All LLC</div>
-  </div>
-</header>
-
-<main>
-
-<section class="hero container">
-  <div>
-    <h1>Productivity tools built to help real work get done.</h1>
-    <p>
-      Our Productivity App helps users track time, manage tasks, and understand their work patterns through clear reporting and insights.
-    </p>
-
-    <a class="btn btn-primary" href="#product">Explore App</a>
-
-    <a class="btn btn-play" 
-       href="https://play.google.com/store/apps/details?id=com.twentyoverall.productivity_tracker" 
-       target="_blank">
-       Download on Google Play
-    </a>
-
-    <a class="btn btn-secondary" href="mailto:toa.apps@outlook.com">Contact</a>
-  </div>
-
-  <div class="preview">
-    <img src="https://raw.githubusercontent.com/ibuniquelw-hue/ibuniquelw-hue.github.io/main/home.png" alt="App Preview">
-  </div>
-</section>
-
-<section id="product" class="container">
-  <h2>Productivity App</h2>
-  <p>A clean, focused Android app for tracking work, logs, and performance.</p>
-
-  <a class="btn btn-play" 
-     href="https://play.google.com/store/apps/details?id=com.twentyoverall.productivity_tracker" 
-     target="_blank">
-     Get the App
-  </a>
-
-  <div class="cards">
-    <div class="card">
-      <h3>Time Tracking</h3>
-      <p>Track your daily work with precision.</p>
+  <header>
+    <div class="wrap">
+      <nav>
+        <a class="brand" href="#top" aria-label="Twenty Over All LLC home">
+          <div class="brand-mark">20</div>
+          <div>
+            Twenty Over All LLC
+            <small>Practical Android apps</small>
+          </div>
+        </a>
+        <div class="nav-links">
+          <a href="#apps">Apps</a>
+          <a href="#about">About</a>
+          <a href="#support">Support</a>
+        </div>
+      </nav>
     </div>
+  </header>
 
-    <div class="card">
-      <h3>Logs & Editing</h3>
-      <p>Manage and update your activity easily.</p>
-    </div>
+  <main id="top">
+    <section class="hero wrap">
+      <div>
+        <span class="eyebrow">Built for everyday workflows</span>
+        <h1>Simple apps for tracking work, food, and fitness.</h1>
+        <p class="lead">
+          Twenty Over All LLC builds practical Android tools that help users stay organized,
+          remember what matters, and track progress without unnecessary complexity.
+        </p>
+        <div class="button-row">
+          <a class="button primary" href="#apps">Explore apps</a>
+          <a class="button" href="mailto:toa.apps@outlook.com">Contact support</a>
+        </div>
+      </div>
 
-    <div class="card">
-      <h3>Reports & Insights</h3>
-      <p>Visualize your productivity and trends.</p>
-    </div>
-  </div>
-</section>
+      <div class="hero-stack" aria-label="Twenty Over All app lineup">
+        <div class="mini-app">
+          <div class="icon productivity">✓</div>
+          <div>
+            <h3>Productivity Tracker</h3>
+            <p>Task, time, logs, and performance reporting.</p>
+          </div>
+        </div>
+        <div class="mini-app">
+          <div class="icon food">🍽️</div>
+          <div>
+            <h3>What's Good</h3>
+            <p>Restaurant notes, group preferences, and food picks.</p>
+          </div>
+        </div>
+        <div class="mini-app">
+          <div class="icon workout">🏋</div>
+          <div>
+            <h3>Workout</h3>
+            <p>Workout logging, strength progress, and shoe mileage.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section class="container">
-  <h2>About</h2>
-  <p>
-    Twenty Over All LLC builds practical productivity tools designed for real-world use.
-  </p>
-</section>
+    <section id="apps">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Our apps</h2>
+          <p>Each app solves a focused daily problem with a clean interface, cloud-ready data patterns, and practical tracking.</p>
+        </div>
 
-<section class="container">
-  <h2>Contact</h2>
-  <p>Email: toa.apps@outlook.com</p>
-</section>
+        <div class="apps-grid">
+          <article class="app-card productivity">
+            <div class="app-top">
+              <div class="icon productivity">✓</div>
+              <div>
+                <h3>Productivity Tracker</h3>
+                <span class="badge">Work & time tracking</span>
+              </div>
+            </div>
+            <p>A focused Android app for tracking tasks, logs, work time, and productivity patterns.</p>
+            <ul class="feature-list">
+              <li>Task and time tracking</li>
+              <li>Daily logs and editing</li>
+              <li>Reports and insights</li>
+              <li>Work pattern visibility</li>
+            </ul>
+            <div class="card-actions">
+              <a class="button play" href="https://play.google.com/store/apps/details?id=com.twentyoverall.productivity_tracker" target="_blank" rel="noopener">Google Play</a>
+              <a class="button" href="mailto:toa.apps@outlook.com">Support</a>
+            </div>
+          </article>
 
-</main>
+          <article class="app-card food">
+            <div class="app-top">
+              <div class="icon food">🍽️</div>
+              <div>
+                <h3>What's Good</h3>
+                <span class="badge">Restaurant notes</span>
+              </div>
+            </div>
+            <p>Remember restaurants, save food notes, track group preferences, and settle where to eat.</p>
+            <ul class="feature-list">
+              <li>Restaurant and food notes</li>
+              <li>Person-specific likes and dislikes</li>
+              <li>Favorites and want-to-try places</li>
+              <li>Settle For Us picker</li>
+            </ul>
+            <div class="card-actions">
+              <a class="button food-main" href="https://play.google.com/store/apps/details?id=com.twentyoverall.whatsgood" target="_blank" rel="noopener">Google Play</a>
+              <a class="button" href="whats_good_privacy.html">Privacy</a>
+              <a class="button" href="whats_good_terms.html">Terms</a>
+            </div>
+          </article>
 
-<footer>
-  &copy; 2026 Twenty Over All LLC
-</footer>
+          <article class="app-card workout">
+            <div class="app-top">
+              <div class="icon workout">🏋</div>
+              <div>
+                <h3>Workout</h3>
+                <span class="badge">Fitness log</span>
+              </div>
+            </div>
+            <p>Log workouts, track strength progress, review history, and monitor running shoe mileage.</p>
+            <ul class="feature-list">
+              <li>Strength workouts, sets, reps, and weights</li>
+              <li>Exercise notes and progress indicators</li>
+              <li>Outdoor and treadmill run tracking</li>
+              <li>Shoe mileage replacement tracking</li>
+            </ul>
+            <div class="card-actions">
+              <a class="button workout-main" href="https://play.google.com/store/apps/details?id=com.twentyoverall.workouttracker" target="_blank" rel="noopener">Google Play</a>
+              <a class="button" href="workout-public.html#privacy">Privacy</a>
+              <a class="button" href="workout-public.html#terms">Terms</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
+    <section id="about">
+      <div class="wrap">
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>About Twenty Over All LLC</h3>
+            <p>Twenty Over All LLC builds practical mobile apps focused on useful daily workflows, simple interfaces, and steady product improvement.</p>
+          </div>
+          <div class="info-card" id="support">
+            <h3>Support</h3>
+            <p>For app support, privacy requests, terms questions, or account/data deletion requests, contact <a href="mailto:toa.apps@outlook.com">toa.apps@outlook.com</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© 2026 Twenty Over All LLC · <a href="mailto:toa.apps@outlook.com">toa.apps@outlook.com</a></div>
+  </footer>
 </body>
 </html>
