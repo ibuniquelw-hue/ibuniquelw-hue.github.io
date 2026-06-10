@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crew Calendar Privacy Policy</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #0f172a; color: #e5e7eb; line-height: 1.6; margin: 0; padding: 32px; }
+    main { max-width: 900px; margin: 0 auto; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 24px; padding: 28px; }
+    h1, h2 { color: #ffb84d; }
+    a { color: #ff8a3d; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Crew Calendar Privacy Policy</h1>
+    <p><strong>Effective date:</strong> To be updated before public release.</p>
+
+    <p>Crew Calendar is operated by Twenty Over All LLC. This policy explains how Crew Calendar handles information when you use the app.</p>
+
+    <h2>Information We Collect</h2>
+    <p>Crew Calendar may collect account information such as an email address if you choose email sign-in. The app also stores user-created calendar content such as crew names, invite codes, members, birthdays, availability blocks, vacations, and shared planning items.</p>
+
+    <h2>How We Use Information</h2>
+    <p>We use this information to provide shared calendar, crew invite, availability, and sync features.</p>
+
+    <h2>Cloud Services</h2>
+    <p>Crew Calendar uses Firebase services, including Firebase Authentication and Cloud Firestore, to authenticate users and sync shared calendar data across devices.</p>
+
+    <h2>Sharing</h2>
+    <p>Your crew calendar information is shared with members who join your crew using an invite code. We do not sell personal information.</p>
+
+    <h2>Security</h2>
+    <p>Data is transmitted using encrypted connections. No method of storage or transmission is perfect, but we use standard cloud security practices through Firebase.</p>
+
+    <h2>Data Deletion</h2>
+    <p>Before public release, Crew Calendar will include a clearer data deletion process. For beta testing, contact us to request deletion of test data.</p>
+
+    <h2>Contact</h2>
+    <p>Questions? Contact: ibunique.lw@gmail.com</p>
+  </main>
+</body>
+</html>
